@@ -7,18 +7,21 @@
 
 import Foundation
 
-@MainActor  //@MainActor:- A singleton or global actor whose executor is equivalent to the main dispatch queue.
-final class UserListViewModel: ObservableObject {  // ObservableObject :- A type of object with a publisher that emits before the object has changed.
+@MainActor
+final class UserListViewModel: ObservableObject {
     
-    @Published var users: [UserModel]?   // @Published :- A property wrapper, allowing us to create observable objects that automatically announce when changes occur. SwiftUl will automatically monitor for such changes, and re-invoke the body property of any views that rely on the data.
+    @Published var users: [UserModel]?
     @Published var userError: UserError?
     @Published var shouldShowAlert = false
     @Published var isLoading = false
     
-    func getUsers() async {
+    func getUsers(name : String, id : String, email : String) async {
+        print(name)
+        print(id)
+        print(email)
         isLoading = true
         do {
-            self.users = try await WebService.getUsersData()
+            self.users = try await WebService.getUsersData(name: name, id: id, email: email)
             self.isLoading = false
         } catch(let error) {
             userError = UserError.custom(error: error)

@@ -11,7 +11,7 @@ import SwiftUI
 struct MVVM_API_Data_PostApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UserView()
         }
     }
 }

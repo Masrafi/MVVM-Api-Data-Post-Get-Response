@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserModel: Codable {  // Codable is a type alias for the Encodable and Decodable protocols. When you use Codable as a type or a generic constraint, it matches any type that conforrms to both profocols.
+struct UserModel: Codable {
     let login: String?
     let id: Int?
     let nodeID: String?
